@@ -1,16 +1,15 @@
 package com.gyub.core.network.di
 
+import com.google.gson.Gson
 import com.gyub.core.network.const.Http.Url.BASE_URL
-import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import kotlinx.serialization.json.Json
-import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 import javax.inject.Named
 import javax.inject.Singleton
@@ -25,18 +24,20 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 internal object NetworkModule {
 
+    @Provides
+    @Singleton
+    fun provideGson() = Gson()
+
     @Singleton
     @Provides
     fun provideRetrofit(
         okHttpClient: OkHttpClient,
-        networkJson: Json,
+        gson: Gson,
     ): Retrofit.Builder {
         return Retrofit.Builder()
             .baseUrl(BASE_URL)
             .client(okHttpClient)
-            .addConverterFactory(
-                networkJson.asConverterFactory("application/json".toMediaType()),
-            )
+            .addConverterFactory(GsonConverterFactory.create(gson))
     }
 
     @Singleton

@@ -28,6 +28,10 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
+    packaging {
+        resources.excludes.add("META-INF/gradle/incremental.annotation.processors")
+    }
 }
 
 dependencies {
@@ -36,11 +40,10 @@ dependencies {
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
     implementation(libs.retrofit.core)
-    implementation(libs.retrofit.kotlin.serialization)
+    implementation(libs.retrofit.convertoer.gson)
     implementation(libs.okhttp.logging)
     implementation(libs.hilt.android)
     implementation(libs.hilt.compiler)
-    implementation(libs.kotlinx.serialization.json)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
