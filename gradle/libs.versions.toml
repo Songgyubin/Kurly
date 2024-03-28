@@ -9,8 +9,12 @@ appcompat = "1.6.1"
 material = "1.11.0"
 retrofit = "2.9.0"
 retrofitGson = "2.9.0"
-okhttp = "4.12.0"
+okhttpLogging = "4.12.0"
 hilt = "2.50"
+hiltExt = "1.1.0"
+okhttp = "4.8.0"
+gson = "2.9.0"
+runner = "1.5.2"
 
 
 
@@ -23,18 +27,23 @@ androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version
 
 # Google
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+gson = {group = "com.google.code.gson", name = "gson", version.ref = "gson"}
 
 # Retrofit
 retrofit-core = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
-okhttp-logging = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okhttp" }
 retrofit-convertoer-gson = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "retrofitGson" }
+okhttp-logging = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okhttpLogging" }
+okhttp = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okhttp" }
 
 # Hilt
 hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
 hilt-compiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "hilt" }
+hilt-android-testing = { group = "com.google.dagger", name = "hilt-android-testing", version.ref = "hilt" }
+hilt-ext-compiler = { group = "androidx.hilt", name = "hilt-compiler", version.ref = "hiltExt" }
 
 # Test
 junit = { group = "junit", name = "junit", version.ref = "junit" }
+androidx-runner = { group = "androidx.test", name = "runner", version.ref = "runner" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

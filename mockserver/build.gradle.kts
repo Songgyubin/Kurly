@@ -6,26 +6,25 @@ plugins {
 }
 
 android {
-    namespace = "com.gyub.core.network"
+    namespace = "com.kurly.android.mockserver"
+
     compileSdk = 34
+
+    buildFeatures {
+        buildConfig = true
+    }
 
     defaultConfig {
         minSdk = 24
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles("consumer-rules.pro")
+        testInstrumentationRunner = "com.kurly.android.mockserver.MockTestRunner"
     }
 
-    buildTypes {
-        release {
-            isMinifyEnabled = false
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
-        }
-    }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
+
     kotlinOptions {
         jvmTarget = "1.8"
     }
@@ -36,17 +35,22 @@ android {
 }
 
 dependencies {
-
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.appcompat)
-    implementation(libs.material)
-    implementation(libs.retrofit.core)
-    implementation(libs.retrofit.convertoer.gson)
-    implementation(libs.okhttp.logging)
+    implementation(libs.okhttp)
+    implementation(libs.gson)
     implementation(libs.hilt.android)
+    implementation(libs.androidx.runner)
     kapt(libs.hilt.compiler)
 
     testImplementation(libs.junit)
+    testImplementation(libs.hilt.android.testing)
+
+    androidTestImplementation(libs.hilt.android.testing)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
+    kaptAndroidTest(libs.hilt.compiler)
+
+    debugImplementation(libs.hilt.android.testing)
+
+    androidTestAnnotationProcessor(libs.hilt.compiler)
 }
