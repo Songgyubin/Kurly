@@ -1,7 +1,9 @@
 package com.gyub.core.network.di
 
+import android.content.Context
 import com.google.gson.Gson
 import com.gyub.core.network.const.Http.Url.BASE_URL
+import com.kurly.android.mockserver.MockInterceptor
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -43,10 +45,12 @@ internal object NetworkModule {
     @Singleton
     @Provides
     fun provideOkHttpClient(
-        @Named("RetrofitInterceptor") interceptor: HttpLoggingInterceptor
+        @Named("RetrofitInterceptor") interceptor: HttpLoggingInterceptor,
+        context: Context
     ): OkHttpClient {
         return OkHttpClient.Builder()
             .addInterceptor(interceptor)
+            .addInterceptor(MockInterceptor(context))
             .connectTimeout(60, TimeUnit.SECONDS)
             .readTimeout(60, TimeUnit.SECONDS)
             .writeTimeout(60, TimeUnit.SECONDS)
