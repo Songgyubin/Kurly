@@ -1,8 +1,8 @@
 package com.gyub.core.network.fake
 
 import com.google.gson.Gson
-import com.gyub.core.network.model.Item
 import com.gyub.core.network.model.Product
+import com.gyub.core.network.model.Section
 import com.gyub.core.network.model.base.NetworkResponse
 import com.gyub.core.network.util.extension.fromJson
 import javax.inject.Inject
@@ -17,9 +17,9 @@ class FakeSectionsDataSource @Inject constructor(
     private val gson: Gson
 ) {
 
-    fun getSections(): List<Item>? {
+    fun getSections(): List<Section>? {
         val jsonString = getJsonFromAsset(SECTIONS_1)
-        return gson.fromJson<NetworkResponse<List<Item>>>(jsonString)?.data
+        return gson.fromJson<NetworkResponse<List<Section>>>(jsonString)?.data
     }
 
     fun getSectionProducts(): List<Product>? {

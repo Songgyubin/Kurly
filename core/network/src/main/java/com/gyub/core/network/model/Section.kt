@@ -6,7 +6,7 @@ package com.gyub.core.network.model
  * @author   Gyub
  * @created  2024/03/28
  */
-data class Item(
+data class Section(
     val title: String?,
     val id: Int?,
     val type: String?,
