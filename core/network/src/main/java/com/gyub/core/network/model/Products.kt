@@ -6,10 +6,6 @@ package com.gyub.core.network.model
  * @author   Gyub
  * @created  2024/03/28
  */
-data class SectionProducts(
-    val data: List<Product>?
-)
-
 data class Product(
     val id: Int?,
     val name: String?,
