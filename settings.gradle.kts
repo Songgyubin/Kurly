@@ -23,3 +23,4 @@ rootProject.name = "Kurly"
 include(":app")
 include(":core:network")
 include(":mockserver")
+include(":core:domain")
