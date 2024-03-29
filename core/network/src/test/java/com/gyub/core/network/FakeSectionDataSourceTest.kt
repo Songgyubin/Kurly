@@ -2,8 +2,8 @@ package com.gyub.core.network
 
 import com.google.gson.Gson
 import com.gyub.core.network.fake.FakeSectionsDataSource
-import com.gyub.core.network.model.Item
 import com.gyub.core.network.model.Product
+import com.gyub.core.network.model.Section
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
@@ -29,7 +29,7 @@ class FakeSectionsDataSourceTest {
         val sections = fakeSectionsDataSource.getSections()
 
         assertEquals(
-            Item(
+            Section(
                 title = "함께하면 더 좋은 상품",
                 id = 1,
                 type = "grid",
