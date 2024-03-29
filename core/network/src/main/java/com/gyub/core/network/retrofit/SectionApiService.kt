@@ -1,4 +1,4 @@
-package com.gyub.core.network.service
+package com.gyub.core.network.retrofit
 
 /**
  *

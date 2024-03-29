@@ -35,7 +35,7 @@ class FakeSectionsDataSourceTest {
                 type = "grid",
                 url = "section_products_1"
             ),
-            sections.data?.firstOrNull()
+            sections?.firstOrNull()
         )
     }
 
@@ -52,7 +52,7 @@ class FakeSectionsDataSourceTest {
                 discountedPrice = 1800,
                 isSoldOut = false
             ),
-            sectionProducts.data?.firstOrNull()
+            sectionProducts?.firstOrNull()
         )
     }
 }
