@@ -24,5 +24,4 @@ class SectionRepositoryImpl @Inject constructor(
             it.toEntity()
         }
     }
-
 }
