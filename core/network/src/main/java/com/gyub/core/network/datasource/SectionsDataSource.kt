@@ -1,5 +1,6 @@
 package com.gyub.core.network.datasource
 
+import com.gyub.core.network.model.Product
 import com.gyub.core.network.model.Section
 import com.gyub.core.network.retrofit.SectionApiService
 import javax.inject.Inject
@@ -19,5 +20,12 @@ class SectionsDataSource
      */
     suspend fun getSections(page: Int): List<Section> {
         return sectionApiService.getSections(page).data
+    }
+
+    /**
+     * Section 별 상품 리스트 가져오기
+     */
+    suspend fun getSectionProducts(sectionId: Int): List<Product> {
+        return sectionApiService.getSectionProducts(sectionId).data
     }
 }

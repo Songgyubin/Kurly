@@ -1,5 +1,6 @@
 package com.gyub.core.domain.repository
 
+import com.gyub.core.domain.model.ProductEntity
 import com.gyub.core.domain.model.SectionEntity
 
 /**
@@ -13,4 +14,9 @@ interface SectionRepository {
      * 각 섹션 가져오기
      */
     suspend fun getSections(page: Int): List<SectionEntity>
+
+    /**
+     * Section 별 상품 리스트 가져오기
+     */
+    suspend fun getSectionProducts(sectionId:Int): List<ProductEntity>
 }

@@ -1,5 +1,6 @@
 package repository
 
+import com.gyub.core.domain.model.ProductEntity
 import com.gyub.core.domain.model.SectionEntity
 import com.gyub.core.domain.repository.SectionRepository
 import com.gyub.core.network.datasource.SectionsDataSource
@@ -21,6 +22,15 @@ class SectionRepositoryImpl @Inject constructor(
      */
     override suspend fun getSections(page: Int): List<SectionEntity> {
         return sectionsDataSource.getSections(page).map {
+            it.toEntity()
+        }
+    }
+
+    /**
+     * Section 별 상품 리스트 가져오기
+     */
+    override suspend fun getSectionProducts(sectionId: Int): List<ProductEntity> {
+        return sectionsDataSource.getSectionProducts(sectionId).map {
             it.toEntity()
         }
     }
