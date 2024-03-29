@@ -5,3 +5,13 @@ plugins {
     alias(libs.plugins.androidLibrary) apply false
     alias(libs.plugins.hilt) apply false
 }
+
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath ("com.google.dagger:hilt-android-gradle-plugin:2.50")
+    }
+}
