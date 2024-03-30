@@ -1,11 +1,14 @@
 package com.gyub.core.domain.usecase
 
+import com.gyub.core.common.di.IoDispatcher
 import com.gyub.core.domain.model.ProductEntity
 import com.gyub.core.domain.model.base.Resource
 import com.gyub.core.domain.repository.SectionRepository
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOn
 import javax.inject.Inject
 
 /**
@@ -15,12 +18,13 @@ import javax.inject.Inject
  * @created  2024/03/30
  */
 class GetSectionProductsUseCase @Inject constructor(
-    private val sectionRepository: SectionRepository
+    private val sectionRepository: SectionRepository,
+    @IoDispatcher private val ioDispatcher: CoroutineDispatcher,
 ) {
     operator fun invoke(sectionId: Int): Flow<Resource<List<ProductEntity>>> = flow {
         val item = sectionRepository.getSectionProducts(sectionId)
         emit(item)
     }.catch {
         emit(Resource.Error)
-    }
+    }.flowOn(ioDispatcher)
 }

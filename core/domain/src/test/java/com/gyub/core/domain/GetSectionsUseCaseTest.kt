@@ -3,7 +3,9 @@ package com.gyub.core.domain
 import com.gyub.core.domain.fake.FakeSectionRepository
 import com.gyub.core.domain.model.base.convertIfSuccess
 import com.gyub.core.domain.usecase.GetSectionsUseCase
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.test.UnconfinedTestDispatcher
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotNull
@@ -22,9 +24,12 @@ class GetSectionsUseCaseTest {
     private lateinit var getSectionsUseCase: GetSectionsUseCase
     private val sectionRepository = FakeSectionRepository()
 
+    @OptIn(ExperimentalCoroutinesApi::class)
+    private val testDispatcher = UnconfinedTestDispatcher()
+
     @Before
     fun setUp() {
-        getSectionsUseCase = GetSectionsUseCase(sectionRepository)
+        getSectionsUseCase = GetSectionsUseCase(sectionRepository, testDispatcher)
     }
 
     @Test
@@ -39,5 +44,4 @@ class GetSectionsUseCaseTest {
             assertEquals(1, firstItem.id)
         }
     }
-
 }
