@@ -6,6 +6,11 @@ package com.gyub.core.domain.model
  * @author   Gyub
  * @created  2024/03/29
  */
+data class CombinedSectionsEntity(
+    val combinedSection: List<CombinedSectionEntity>?,
+    val nextPage: Int?
+)
+
 data class CombinedSectionEntity(
     val section: SectionEntity?,
     val products: List<ProductEntity>?

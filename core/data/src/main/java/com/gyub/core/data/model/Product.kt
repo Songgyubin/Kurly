@@ -1,4 +1,4 @@
-package model
+package com.gyub.core.data.model
 
 import com.gyub.core.domain.model.ProductEntity
 import com.gyub.core.network.model.Product
