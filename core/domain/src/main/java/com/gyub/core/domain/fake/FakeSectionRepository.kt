@@ -2,6 +2,7 @@ package com.gyub.core.domain.fake
 
 import com.gyub.core.domain.model.ProductEntity
 import com.gyub.core.domain.model.SectionEntity
+import com.gyub.core.domain.model.SectionsEntity
 import com.gyub.core.domain.repository.SectionRepository
 
 /**
@@ -15,14 +16,17 @@ class FakeSectionRepository : SectionRepository {
     /**
      * 각 섹션 가져오기
      */
-    override suspend fun getSections(page: Int): List<SectionEntity> {
-        return listOf(
-            SectionEntity(
-                title = "함께하면 더 좋은 상품",
-                id = 1,
-                type = "grid",
-                url = "section_products_1"
-            )
+    override suspend fun getSections(page: Int): SectionsEntity {
+        return SectionsEntity(
+            sections = listOf(
+                SectionEntity(
+                    title = "함께하면 더 좋은 상품",
+                    id = 1,
+                    type = "grid",
+                    url = "section_products_1"
+                )
+            ),
+            nextPage = 2
         )
     }
 

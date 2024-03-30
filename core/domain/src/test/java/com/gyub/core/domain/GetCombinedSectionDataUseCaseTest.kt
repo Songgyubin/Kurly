@@ -32,11 +32,12 @@ class GetCombinedSectionDataUseCaseTest {
 
         assertNotNull(combinedData)
 
-        assertTrue(combinedData!!.isNotEmpty())
+        val sections = combinedData!!.combinedSection!!
+        assertTrue(sections.isNotEmpty())
 
-        val firstItem = combinedData.first()
+        val firstItem = sections.first()
 
-        assertEquals(1,firstItem.section?.id)
+        assertEquals(1, firstItem.section?.id)
         assertEquals(5063110, firstItem.products?.firstOrNull()?.id)
     }
 
