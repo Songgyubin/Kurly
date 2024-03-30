@@ -17,14 +17,14 @@ class FakeSectionsDataSource @Inject constructor(
     private val gson: Gson
 ) {
 
-    fun getSections(): List<Section>? {
+    fun getSections(): List<Section> {
         val jsonString = getJsonFromAsset(SECTIONS_1)
-        return gson.fromJson<NetworkResponse<List<Section>>>(jsonString)?.data
+        return gson.fromJson<NetworkResponse<List<Section>>>(jsonString)?.data.orEmpty()
     }
 
-    fun getSectionProducts(): List<Product>? {
+    fun getSectionProducts(): List<Product> {
         val jsonString = getJsonFromAsset(SECTION_PRODUCTS_1)
-        return gson.fromJson<NetworkResponse<List<Product>>>(jsonString)?.data
+        return gson.fromJson<NetworkResponse<List<Product>>>(jsonString)?.data.orEmpty()
     }
 
     private fun getJsonFromAsset(filePath: String): String {
