@@ -1,5 +1,8 @@
 package com.gyub.kurly.model
 
+import com.gyub.common.util.extension.orDefault
+import com.gyub.core.domain.model.ProductEntity
+
 /**
  * Product UI Model
  *
@@ -14,3 +17,18 @@ data class ProductUiModel(
     val discountedPrice: Int = 0,
     val isSoldOut: Boolean = false
 )
+
+/**
+ * Mapper
+ * [ProductEntity] to [ProductUiModel]
+ */
+fun ProductEntity?.toUiModel(): ProductUiModel {
+    return ProductUiModel(
+        id = this?.id.orDefault(),
+        name = this?.name.orEmpty(),
+        image = this?.image.orEmpty(),
+        originalPrice = this?.originalPrice.orDefault(),
+        discountedPrice = this?.discountedPrice.orDefault(),
+        isSoldOut = this?.isSoldOut.orDefault(false)
+    )
+}
