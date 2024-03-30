@@ -1,4 +1,4 @@
-package com.gyub.core.network.datasource
+package com.gyub.core.data.datasource
 
 import com.gyub.core.network.model.Product
 import com.gyub.core.network.model.Section

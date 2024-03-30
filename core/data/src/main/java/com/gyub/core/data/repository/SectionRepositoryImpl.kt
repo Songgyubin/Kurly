@@ -1,10 +1,10 @@
-package repository
+package com.gyub.core.data.repository
 
 import com.gyub.core.domain.model.ProductEntity
 import com.gyub.core.domain.model.SectionEntity
 import com.gyub.core.domain.repository.SectionRepository
-import com.gyub.core.network.datasource.SectionsDataSource
-import model.toEntity
+import com.gyub.core.data.datasource.SectionsDataSource
+import com.gyub.core.data.model.toEntity
 import javax.inject.Inject
 
 /**
