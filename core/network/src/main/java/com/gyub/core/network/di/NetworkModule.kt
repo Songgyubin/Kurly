@@ -1,8 +1,10 @@
 package com.gyub.core.network.di
 
 import android.content.Context
+import android.util.Log
 import com.google.gson.Gson
 import com.gyub.core.network.const.Http.Url.BASE_URL
+import com.gyub.core.network.util.extension.NetworkUtil
 import com.kurly.android.mockserver.MockInterceptor
 import dagger.Module
 import dagger.Provides
@@ -61,7 +63,9 @@ internal object NetworkModule {
     @Provides
     @Named("RetrofitInterceptor")
     fun provideRetrofitInterceptor(): HttpLoggingInterceptor {
-        return HttpLoggingInterceptor().apply {
+        return HttpLoggingInterceptor{ message ->
+            Log.d("### Retrofit --", NetworkUtil.getPrettyLogs(message))
+        }.apply {
             level = HttpLoggingInterceptor.Level.BODY
         }
     }
