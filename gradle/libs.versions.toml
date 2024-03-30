@@ -16,6 +16,7 @@ okhttp = "4.8.0"
 gson = "2.9.0"
 runner = "1.5.2"
 kotlinxCoroutines = "1.7.3"
+activityKtx = "1.8.2"
 
 
 [libraries]
@@ -24,6 +25,7 @@ androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = 
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+androidx-activity-ktx = { module = "androidx.activity:activity-ktx", version.ref = "activityKtx" }
 
 # Google
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
