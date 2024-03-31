@@ -2,11 +2,9 @@ package com.gyub.core.domain.usecase
 
 import com.gyub.core.common.di.IoDispatcher
 import com.gyub.core.domain.model.SectionsEntity
-import com.gyub.core.domain.model.base.Resource
 import com.gyub.core.domain.repository.SectionRepository
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import javax.inject.Inject
@@ -21,10 +19,8 @@ class GetSectionsUseCase @Inject constructor(
     private val repository: SectionRepository,
     @IoDispatcher private val ioDispatcher: CoroutineDispatcher,
 ) {
-    operator fun invoke(page: Int): Flow<Resource<SectionsEntity>> = flow {
+    operator fun invoke(page: Int): Flow<SectionsEntity> = flow {
         val item = repository.getSections(page)
         emit(item)
-    }.catch {
-        emit(Resource.Error)
     }.flowOn(ioDispatcher)
 }
