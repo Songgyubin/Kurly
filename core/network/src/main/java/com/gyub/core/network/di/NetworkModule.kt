@@ -9,6 +9,7 @@ import com.kurly.android.mockserver.MockInterceptor
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -48,7 +49,7 @@ internal object NetworkModule {
     @Provides
     fun provideOkHttpClient(
         @Named("RetrofitInterceptor") interceptor: HttpLoggingInterceptor,
-        context: Context
+        @ApplicationContext context: Context
     ): OkHttpClient {
         return OkHttpClient.Builder()
             .addInterceptor(interceptor)

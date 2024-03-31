@@ -20,7 +20,7 @@ interface SectionApiService {
      * Sections 정보 가져오기
      */
     @GET(SECTIONS)
-    suspend fun getSections(page: Int): NetworkResponse<List<Section>>
+    suspend fun getSections(@Query("page") page: Int): NetworkResponse<List<Section>>
 
     /**
      * Section 별 상품 리스트 가져오기
