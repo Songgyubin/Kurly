@@ -20,7 +20,7 @@ import java.text.DecimalFormat
  * ex) 30%
  */
 fun Int.calcDiscountPercent(discountedPrice: Int): String {
-    val discountPercent = (this - discountedPrice / this) * 100
+    val discountPercent = (((this - discountedPrice).toFloat() / this) * 100).toInt()
 
     return "$discountPercent%"
 }

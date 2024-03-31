@@ -43,6 +43,7 @@ dependencies {
 
     testImplementation(libs.junit)
     testImplementation(libs.hilt.android.testing)
+    testAnnotationProcessor(libs.hilt.compiler)
 
     androidTestImplementation(libs.hilt.android.testing)
     androidTestImplementation(libs.androidx.junit)
@@ -50,7 +51,6 @@ dependencies {
 
     kaptAndroidTest(libs.hilt.compiler)
 
-    debugImplementation(libs.hilt.android.testing)
-
+    androidTestImplementation(libs.hilt.android.testing)
     androidTestAnnotationProcessor(libs.hilt.compiler)
 }

@@ -1,7 +1,9 @@
-package com.gyub.kurly.model
+package com.gyub.kurly.model.section
 
 import com.gyub.common.util.extension.orDefault
+import com.gyub.core.common.util.extension.orDefault
 import com.gyub.core.domain.model.ProductEntity
+import com.gyub.kurly.ui.section.event.WishEvent
 
 /**
  * Product UI Model
@@ -15,8 +17,11 @@ data class ProductUiModel(
     val image: String = "",
     val originalPrice: Int = 0,
     val discountedPrice: Int = 0,
-    val isSoldOut: Boolean = false
-)
+    val isSoldOut: Boolean = false,
+    val isWish: Boolean = false
+) : WishEvent {
+    override var onWishClicked: (Int, Boolean) -> Unit = { _, _ -> }
+}
 
 /**
  * Mapper

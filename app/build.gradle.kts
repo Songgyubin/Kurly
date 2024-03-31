@@ -6,6 +6,10 @@ plugins {
 }
 
 android {
+    signingConfigs {
+        create("release") {
+        }
+    }
     namespace = "com.gyub.kurly"
     compileSdk = 34
 
@@ -20,9 +24,13 @@ android {
     }
 
     buildTypes {
-        release {
+        debug {
             isMinifyEnabled = false
+        }
+        release {
+            isMinifyEnabled = true
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            signingConfig = signingConfigs.getByName("debug")
         }
     }
 
@@ -54,6 +62,10 @@ dependencies {
     implementation(libs.androidx.activity.ktx)
     implementation(libs.material)
     implementation(libs.hilt.android)
+    implementation(libs.glide)
+    implementation(libs.androidx.swipe.refresh.layout)
+    implementation("androidx.recyclerview:recyclerview:1.3.2")
+
     kapt(libs.hilt.compiler)
 
     testImplementation(libs.junit)
