@@ -1,4 +1,4 @@
-package com.gyub.common.util.extension
+package com.gyub.core.common.util.extension
 
 /**
  * Int 형에 대한 확장 함수
