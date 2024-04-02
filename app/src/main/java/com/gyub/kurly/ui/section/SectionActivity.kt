@@ -45,7 +45,10 @@ class SectionActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        setUpData()
+        if (savedInstanceState == null) {
+            setUpData()
+        }
+
         setLayout()
         collect()
     }
