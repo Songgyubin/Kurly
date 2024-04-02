@@ -31,8 +31,8 @@ class GetCombinedSectionUseCase @Inject constructor(
         val nextPage = sectionsEntity.nextPage.orDefault()
 
         val combinedSections = coroutineScope {
-            val deferredProducts = sections?.mapNotNull { section ->
-                section.id?.let { id ->
+            val deferredProducts = sections!!.map { section ->
+                section.id!!.let { id ->
                     async {
                         CombinedSectionEntity(
                             section,
@@ -41,7 +41,7 @@ class GetCombinedSectionUseCase @Inject constructor(
                     }
                 }
             }
-            deferredProducts!!.awaitAll() to nextPage
+            deferredProducts.awaitAll() to nextPage
         }
         emit(combinedSections)
     }.toResult()
