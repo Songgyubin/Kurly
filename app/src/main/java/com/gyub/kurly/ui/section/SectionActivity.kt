@@ -45,9 +45,16 @@ class SectionActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
+        setUpData()
         setLayout()
-        sectionViewModel.fetchSections()
         collect()
+    }
+
+    /**
+     * 초기 데이터 세팅
+     */
+    private fun setUpData() {
+        sectionViewModel.fetchSections()
     }
 
     /**
@@ -56,6 +63,17 @@ class SectionActivity : AppCompatActivity() {
     private fun setLayout() {
         setSectionsRecyclerView()
         setUpRefreshLayout()
+    }
+
+    /**
+     * collect
+     */
+    private fun collect() {
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                collectCombinedSection()
+            }
+        }
     }
 
     /**
@@ -101,17 +119,6 @@ class SectionActivity : AppCompatActivity() {
     private fun refreshSections() {
         sectionsAdapter.submitList(null)
         sectionViewModel.fetchSections()
-    }
-
-    /**
-     * collect
-     */
-    private fun collect() {
-        lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
-                collectCombinedSection()
-            }
-        }
     }
 
     /**
