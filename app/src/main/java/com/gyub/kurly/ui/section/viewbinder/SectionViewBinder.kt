@@ -146,6 +146,11 @@ class SectionViewBinder {
     }
 
 
+    /**
+     * 찜 아이콘 관리 enum
+     *
+     * @property resourceId
+     */
     enum class WishIcon(val resourceId: Int) {
         WISH(R.drawable.ic_btn_heart_on),
         NOT_WISH(R.drawable.ic_btn_heart_off)

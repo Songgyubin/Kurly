@@ -14,10 +14,11 @@ data class CombinedSectionUiModel(
     val products: List<ProductUiModel> = emptyList(),
 )
 
-
 /**
  * Mapper
  * [CombinedSectionEntity] to [CombinedSectionUiModel]
+ *
+ * @return [CombinedSectionUiModel]
  */
 fun CombinedSectionEntity.toUiModel(): CombinedSectionUiModel {
     return CombinedSectionUiModel(
@@ -26,27 +27,11 @@ fun CombinedSectionEntity.toUiModel(): CombinedSectionUiModel {
     )
 }
 
-///**
-// * Mapper
-// * [CombinedSectionEntity] to []
-// */
-//fun Pair<List<CombinedSectionEntity>, Int>.toUiModel(): CombinedSectionsUiModel {
-//    return CombinedSectionsUiModel(
-//        combinedSections = this.first.map { entity ->
-//            CombinedSectionUiModel(
-//                entity.section.toUiModel(),
-//                entity.products?.map { it.toUiModel() }.orEmpty()
-//            )
-//        }, nextPage = this.second.orDefault()
-//    )
-//}
-
-
 /**
  * Mapper
  * [CombinedSectionUiModel] to [CombinedSectionTypeModel]
  *
- * @return
+ * @return [CombinedSectionTypeModel]
  */
 fun CombinedSectionUiModel.toTypeModel(): CombinedSectionTypeModel {
     val type = section.type

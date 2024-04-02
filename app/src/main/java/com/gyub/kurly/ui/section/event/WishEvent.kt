@@ -2,6 +2,7 @@ package com.gyub.kurly.ui.section.event
 
 /**
  * 찜 이벤트 인터페이스
+ * UI 모델 및 ViewModel 에서 구현
  *
  * @author   Gyub
  * @created  2024/04/02

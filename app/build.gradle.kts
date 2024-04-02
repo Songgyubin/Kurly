@@ -64,7 +64,7 @@ dependencies {
     implementation(libs.hilt.android)
     implementation(libs.glide)
     implementation(libs.androidx.swipe.refresh.layout)
-    implementation("androidx.recyclerview:recyclerview:1.3.2")
+    implementation(libs.androidx.recyclerview)
 
     kapt(libs.hilt.compiler)
 

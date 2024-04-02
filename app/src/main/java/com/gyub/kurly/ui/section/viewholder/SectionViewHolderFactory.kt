@@ -2,13 +2,13 @@ package com.gyub.kurly.ui.section.viewholder
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.gyub.kurly.util.extension.viewBind
 import com.gyub.kurly.R
 import com.gyub.kurly.constant.enums.SectionViewType
 import com.gyub.kurly.constant.enums.SectionViewType.GRID_SECTION
 import com.gyub.kurly.constant.enums.SectionViewType.HORIZONTAL_SECTION
 import com.gyub.kurly.constant.enums.SectionViewType.VERTICAL_SECTION
 import com.gyub.kurly.ui.section.viewbinder.SectionViewBinder
+import com.gyub.kurly.util.extension.viewBind
 
 /**
  * 섹션 ViewHolder Factory

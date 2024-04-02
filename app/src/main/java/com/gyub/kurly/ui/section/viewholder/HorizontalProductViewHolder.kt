@@ -4,7 +4,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.gyub.kurly.databinding.AdapterHorizontalProductBinding
 import com.gyub.kurly.model.section.ProductUiModel
 import com.gyub.kurly.ui.section.adapter.HorizontalProductAdapter
-import com.gyub.kurly.ui.section.adapter.VerticalProductAdapter
 import com.gyub.kurly.ui.section.viewbinder.SectionViewBinder
 import com.gyub.kurly.util.extension.executeAfter
 
@@ -42,6 +41,7 @@ class HorizontalProductViewHolder(
                 }
         }
     }
+
     /**
      * View Bind
      *

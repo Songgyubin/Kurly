@@ -1,6 +1,5 @@
 package com.gyub.kurly.model.section
 
-import com.gyub.common.util.extension.orDefault
 import com.gyub.core.common.util.extension.orDefault
 import com.gyub.core.domain.model.ProductEntity
 import com.gyub.kurly.ui.section.event.WishEvent

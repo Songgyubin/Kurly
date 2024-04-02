@@ -1,7 +1,6 @@
 package com.gyub.kurly.ui.section
 
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -23,7 +22,6 @@ import com.gyub.kurly.util.view.DividerItemDecoration
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
-import java.text.SimpleDateFormat
 
 /**
  * SectionActivity
@@ -97,6 +95,9 @@ class SectionActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * Section 새로고침
+     */
     private fun refreshSections() {
         sectionsAdapter.submitList(null)
         sectionViewModel.fetchSections()
@@ -113,6 +114,9 @@ class SectionActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * 결합된 섹션 collect
+     */
     private suspend fun collectCombinedSection() {
         sectionViewModel.sectionViewState.collectLatest { sectionViewState ->
             when (sectionViewState) {
@@ -126,7 +130,10 @@ class SectionActivity : AppCompatActivity() {
                     binding.swipeRefreshLayout.isRefreshing = true
                 }
 
-                is Error -> Toast.makeText(this@SectionActivity, getString(R.string.unexpected_error_message), Toast.LENGTH_SHORT).show()
+                is Error -> {
+                    binding.swipeRefreshLayout.isRefreshing = false
+                    Toast.makeText(this@SectionActivity, getString(R.string.unexpected_error_message), Toast.LENGTH_SHORT).show()
+                }
             }
         }
     }

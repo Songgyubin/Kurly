@@ -70,6 +70,11 @@ class SectionViewModel @Inject constructor(
         }
     }
 
+    /**
+     * [CombinedSectionTypeModel]에 클릭 이벤트 적용
+     * cf) [WishEvent]
+     * 보일러 플레이트 코드가 생기지만, 다른 타입의 섹션(찜 동작이 필요없는 섹션 등)에 대한 확장성 고려
+     */
     private fun CombinedSectionTypeModel.applyClicked() {
         when (this) {
             is CombinedSectionTypeModel.VerticalSection -> {
@@ -98,6 +103,12 @@ class SectionViewModel @Inject constructor(
         }
     }
 
+    /**
+     * 찜 클릭 이벤트 구현부
+     *
+     * @param productId 상품 Id
+     * @param isWish 해당 상품 찜 여부
+     */
     private fun wishClicked(productId: Int, isWish: Boolean) {
         val inverseWish = !isWish
 
@@ -119,7 +130,19 @@ class SectionViewModel @Inject constructor(
         }
     }
 
-    private fun updateItemIfWishChanged(typeModel: CombinedSectionTypeModel, productId: Int, inverseWish: Boolean): CombinedSectionTypeModel {
+    /**
+     * 찜 상태 업데이트
+     *
+     * @param typeModel [CombinedSectionTypeModel]
+     * @param productId 찜 이벤트가 발생한 product Id
+     * @param inverseWish 바뀔 찜 상태
+     * @return 상태 업데이트 된 [CombinedSectionTypeModel]
+     */
+    private fun updateItemIfWishChanged(
+        typeModel: CombinedSectionTypeModel,
+        productId: Int,
+        inverseWish: Boolean
+    ): CombinedSectionTypeModel {
         return getUpdatedSection(
             typeModel,
             typeModel.getData().products.containsProductId(productId),
@@ -128,6 +151,15 @@ class SectionViewModel @Inject constructor(
         )
     }
 
+    /**
+     * [CombinedSectionTypeModel]에 대한 찜 상태 처리 후 반환
+     *
+     * @param typeModel [CombinedSectionTypeModel]
+     * @param isUpdateItem 업데이트 여부
+     * @param productId 찜 이벤트가 발생한 product Id
+     * @param inverseWish 바뀔 찜 상태
+     * @return 상태 처리 된 [CombinedSectionTypeModel]
+     */
     private fun getUpdatedSection(
         typeModel: CombinedSectionTypeModel,
         isUpdateItem: Boolean,
@@ -148,10 +180,16 @@ class SectionViewModel @Inject constructor(
     /**
      * 찜 등록/해제 상태가 업데이트 된 [CombinedSectionTypeModel.VerticalSection] 반환
      *
-     * @param productId 찜 등록/해제가 이뤄지는 productId
+     * @param typeModel [CombinedSectionTypeModel.VerticalSection]
+     * @param productId 찜 이벤트가 발생한 product Id
+     * @param inverseWish 바뀔 찜 상태
      * @return 찜 등록/해제 상태가 업데이트 된 [CombinedSectionTypeModel.VerticalSection]
      */
-    private fun createUpdatedVerticalSectionForWish(typeModel: CombinedSectionTypeModel.VerticalSection, productId: Int, inverseWish: Boolean)
+    private fun createUpdatedVerticalSectionForWish(
+        typeModel: CombinedSectionTypeModel.VerticalSection,
+        productId: Int,
+        inverseWish: Boolean
+    )
             : CombinedSectionTypeModel.VerticalSection {
         val data = typeModel.data
 
@@ -177,10 +215,16 @@ class SectionViewModel @Inject constructor(
     /**
      * 찜 등록/해제 상태가 업데이트 된 [CombinedSectionTypeModel.HorizontalSection] 반환
      *
-     * @param productId 찜 등록/해제가 이뤄지는 productId
+     * @param typeModel [CombinedSectionTypeModel.HorizontalSection]
+     * @param productId 찜 이벤트가 발생한 product Id
+     * @param inverseWish 바뀔 찜 상태
      * @return 찜 등록/해제 상태가 업데이트 된 [CombinedSectionTypeModel.HorizontalSection]
      */
-    private fun createUpdatedHorizontalSectionForWish(typeModel: CombinedSectionTypeModel.HorizontalSection, productId: Int, inverseWish: Boolean)
+    private fun createUpdatedHorizontalSectionForWish(
+        typeModel: CombinedSectionTypeModel.HorizontalSection,
+        productId: Int,
+        inverseWish: Boolean
+    )
             : CombinedSectionTypeModel.HorizontalSection {
         val data = typeModel.data
 
@@ -206,10 +250,16 @@ class SectionViewModel @Inject constructor(
     /**
      * 찜 등록/해제 상태가 업데이트 된 [CombinedSectionTypeModel.GridSection] 반환
      *
-     * @param productId 찜 등록/해제가 이뤄지는 productId
+     * @param typeModel [CombinedSectionTypeModel.GridSection]
+     * @param productId 찜 이벤트가 발생한 product Id
+     * @param inverseWish 바뀔 찜 상태
      * @return 찜 등록/해제 상태가 업데이트 된 [CombinedSectionTypeModel.GridSection]
      */
-    private fun createUpdatedGridSectionForWish(typeModel: CombinedSectionTypeModel.GridSection, productId: Int, inverseWish: Boolean)
+    private fun createUpdatedGridSectionForWish(
+        typeModel: CombinedSectionTypeModel.GridSection,
+        productId: Int,
+        inverseWish: Boolean
+    )
             : CombinedSectionTypeModel.GridSection {
         val data = typeModel.data
 
@@ -251,6 +301,9 @@ class SectionViewModel @Inject constructor(
         _currentSections = state.combinedSections
     }
 
+    /**
+     * 섹션 뷰 상태 관리 sealed interface
+     */
     sealed interface SectionViewState {
         data object Loading : SectionViewState
 

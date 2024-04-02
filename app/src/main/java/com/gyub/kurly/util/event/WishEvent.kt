@@ -7,7 +7,6 @@ package com.gyub.kurly.util.event
  * @author   Gyub
  * @created  2024/04/01
  */
-//TODO: UI Model에 적용
 interface WishEvent {
     var onWishClicked: (Long, Boolean) -> Unit
 }

@@ -3,11 +3,11 @@ package com.gyub.kurly.ui.section.adapter
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
-import com.gyub.kurly.util.extension.viewBind
 import com.gyub.kurly.R
 import com.gyub.kurly.model.section.ProductUiModel
 import com.gyub.kurly.ui.section.viewbinder.SectionViewBinder
 import com.gyub.kurly.ui.section.viewholder.GridProductViewHolder
+import com.gyub.kurly.util.extension.viewBind
 
 /**
  * Grid 타입 섹션의 상품 Adapter

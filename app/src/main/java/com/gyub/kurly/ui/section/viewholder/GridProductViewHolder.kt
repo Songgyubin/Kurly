@@ -41,6 +41,7 @@ class GridProductViewHolder(
                 }
         }
     }
+
     /**
      * View Bind
      *

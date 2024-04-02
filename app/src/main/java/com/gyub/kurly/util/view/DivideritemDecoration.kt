@@ -9,7 +9,12 @@ import androidx.annotation.ColorRes
 import androidx.recyclerview.widget.RecyclerView
 
 /**
+ * 구분선 데코레이션
  *
+ * @property dividerHeight 구분선 높이
+ * @property spaceHeight 아이템 간격
+ * @param context
+ * @param color 컬러 리소스 Id
  *
  * @author   Gyub
  * @created  2024/04/01
@@ -38,7 +43,6 @@ class DividerItemDecoration(
             val top = child.bottom + params.bottomMargin
             val bottom = top + dividerHeight
 
-            // Draw the divider
             c.drawRect(left.toFloat(), top.toFloat(), right.toFloat(), bottom.toFloat(), paint)
         }
     }
