@@ -17,17 +17,9 @@ class FakeSectionRepository : SectionRepository {
      * 각 섹션 가져오기
      */
     override suspend fun getSections(page: Int): SectionsEntity {
-        return SectionsEntity(
-            sections = listOf(
-                SectionEntity(
-                    title = "함께하면 더 좋은 상품",
-                    id = 1,
-                    type = "grid",
-                    url = "section_products_1"
-                )
-            ),
-            nextPage = 2
-        )
+        if (page == 0) throw IllegalAccessException()
+
+        return sectionListNullSectionsEntity
     }
 
     /**
@@ -45,4 +37,33 @@ class FakeSectionRepository : SectionRepository {
             )
         )
     }
+
+    private val validSectionsEntity = SectionsEntity(
+        sections = listOf(
+            SectionEntity(
+                title = "함께하면 더 좋은 상품",
+                id = 1,
+                type = "grid",
+                url = "section_products_1"
+            )
+        ),
+        nextPage = 2
+    )
+
+    private val sectionListNullSectionsEntity = SectionsEntity(
+        sections = null,
+        nextPage = 2
+    )
+
+    private val idNullSectionsEntity = SectionsEntity(
+        sections = listOf(
+            SectionEntity(
+                title = "함께하면 더 좋은 상품",
+                id = null,
+                type = "grid",
+                url = "section_products_1"
+            )
+        ),
+        nextPage = 2
+    )
 }

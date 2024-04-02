@@ -1,7 +1,6 @@
 package com.gyub.core.domain
 
 import com.gyub.core.domain.fake.FakeSectionRepository
-import com.gyub.core.domain.model.base.convertIfSuccess
 import com.gyub.core.domain.usecase.GetSectionsUseCase
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.first
@@ -34,8 +33,8 @@ class GetSectionsUseCaseTest {
 
     @Test
     fun `verify combine sections and section products`() = runTest {
-        getSectionsUseCase(1).first().convertIfSuccess { sectionsEntity ->
-            val sections = sectionsEntity.sections
+        getSectionsUseCase(1).first().run {
+            val sections = this.sections
             assertNotNull(sections)
             assertTrue(sections!!.isNotEmpty())
 

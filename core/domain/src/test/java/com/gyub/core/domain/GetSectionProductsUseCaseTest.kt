@@ -1,14 +1,12 @@
 package com.gyub.core.domain
 
 import com.gyub.core.domain.fake.FakeSectionRepository
-import com.gyub.core.domain.model.base.convertIfSuccess
 import com.gyub.core.domain.usecase.GetSectionProductsUseCase
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.test.UnconfinedTestDispatcher
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert.assertEquals
-import org.junit.Assert.assertNotNull
 import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Test
@@ -34,10 +32,10 @@ class GetSectionProductsUseCaseTest {
 
     @Test
     fun `verify combine sections and section products`() = runTest {
-        getSectionProductsDataUseCase(1).first().convertIfSuccess { products->
-            assertTrue(products.isNotEmpty())
+        getSectionProductsDataUseCase(1).first().run {
+            assertTrue(this.isNotEmpty())
 
-            val firstItem = products.first()
+            val firstItem = this.first()
 
             assertEquals(5063110, firstItem.id)
         }
